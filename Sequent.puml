@@ -1,0 +1,22 @@
+@startuml quatation
+skinparam sequenceMessageAlign center
+participant Employee
+
+participant customer
+participant truck
+participant management
+
+Employee->customer:จัดการข้อมูลเช่าลูกค้า
+Employee->truck:จัดการคำสั่งเช่ารถบรรทุก
+Employee->management:ขออนุมัติใบเสนอราคา
+management->management:ตรวจสอบใบเสนอราคา
+management->Employee:อนุมัติใบเสนอราคา
+Employee->customer:ยื่นใบเสนอราคา
+customer->customer:ตรวจสอบใบเสนอราคา
+customer->Employee:ยอมรับใบเสนอราคา
+customer->Employee: จ่ายเงิน
+Employee->customer:พิมพ์ใบเสร็จรับเงิน
+management->Employee: ร้องขอรายงาน รายรับ-รายจ่าย
+Employee->Employee:จัดทำรายงาน \nรายรับ-รายจ่าย
+Employee->management:ส่งรายงาน รายรับ - รายจ่าย
+@enduml

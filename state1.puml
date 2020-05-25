@@ -1,0 +1,32 @@
+@startuml payment
+skinparam state {
+    StartColor Red
+    BackgroundColor Peru
+    BorderColor Black
+    FontName Impact
+    EndColor Red
+}
+[*] -right-> payment
+payment-up->payment:Select payment type
+payment:เลือกวิธีชำระเงิน
+payment-->Cash:Select = Cash
+Cash-->[*]:comfirm \nCash
+Cash:จ่ายเงินสด
+payment-->Bank_check:Select = Bank_check
+Bank_check:เลือกธนาคาร
+Bank_check-->Check_Number
+Check_Number:ใส่เลขที่เช็ค\nตรวจสอบเลขที่เช็ค
+Check_Number-up->Check_Number:Check number \ncheck
+Check_Number-->Date:comfirm \nCheck Number
+Date:ลงวันที่
+Date-right->Balance
+Balance:ใส่จำนวนเงิน
+Balance-right->Save_data:Comfirm Balance \nSelect save or cancle
+Save_data-->cancle:Select = cancle
+Save_data:บันทึกการชำระเงิน
+cancle-->[*]:comfirm \ncancle
+Save_data-->save:Select = save
+save-->Printout_payment:comfirm \nsave
+Printout_payment-->[*]
+Printout_payment:พิมพ์ใบเสร็จรับเงิน
+@enduml

@@ -1,0 +1,14 @@
+@startuml quatation
+skinparam sequenceMessageAlign center
+participant Employee
+participant quo_form
+participant quo_control
+participant management
+
+Employee->quo_form:ส่งใบขออนุมัติใบเสนอราคา
+quo_form->quo_control:รับคำขออนุมัติใบเสนอราคา
+quo_control->management:ได้รับใบขออนุมัติใบเสนอราคา
+management->management:ตรวจสอบใบเสนอราคา
+management->quo_control:อนุมัติใบเสนอราคา
+quo_control->Employee:ได้รับการอนุมัติใบเสนอราคา
+@enduml

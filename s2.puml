@@ -1,0 +1,17 @@
+@startuml addemployee
+skinparam sequenceMessageAlign center
+participant Admin
+participant infor_employee_interface
+participant infor_employee_table
+
+Admin->infor_employee_interface:เพิ่มข้อมูลพนักงาน
+infor_employee_interface->infor_employee_table:จัดเก็บข้อมูลลงฐานข้อมูล
+infor_employee_table->infor_employee_table:อัพเดทฐานข้อมูล
+infor_employee_table->infor_employee_interface:แสดงข้อมูลพนักงาน
+Admin->infor_employee_interface:ลบข้อมูลพนักงาน
+infor_employee_table->infor_employee_table:อัพเดทฐานข้อมูล
+infor_employee_table->infor_employee_interface:แสดงข้อมูลพนักงาน
+
+Admin->infor_employee_interface:พิมพ์ใบรายชื่อพนักงาน
+
+@enduml

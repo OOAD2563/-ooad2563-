@@ -1,0 +1,138 @@
+@startuml truck
+Class Login{
+    + Login Form
+}
+Login-up-admin:< Fill in  \n1...1 
+Login-right-Management:< Fill in \n1...1
+Login-down-Employee:< Fill in \n1...1
+Class admin{
+    - adddataemployee()
+    manage status employee
+}
+admin*-adddataemployee: 1...n\n manage > 
+Class adddataemployee{
+    id 
+    username
+    password
+    name 
+    address
+    tel 
+    email 
+    status 
+    register
+    type
+    image
+}
+Class Management{
+    detail_employee
+    approve_quotation
+    request report Revenue - Expenses
+}
+adddataemployee --* Management: < search detail 
+quotation--*Management:< approve_quotation \n1...n
+report--*Management:< request report
+Class Employee{
+    - customerdataform()
+    - managedatatrunk()
+    - payment()
+    - quotation()
+}
+Class payment{
+    id 
+    date 
+    invoice_id
+    payment_type
+    bankname
+    cheque
+    cheque_date
+    money 
+    remark 
+}
+Class customerdataform{
+    id 
+    name 
+    address 
+    tel 
+    email 
+    register
+    contact 
+    about 
+    line_id 
+}
+Class quotation{
+    quo_id 
+    quo_date
+    cus_id
+    quo_product 
+    quo_count 
+    quo_unit 
+    startpoint
+    endpoint
+    quo_distance
+    startdate
+    quo_number
+    trunktype_id
+    truck_id
+    id_driver
+    quo_price
+    quo_total
+    quo_status
+    quo_invoice
+    quo_fuel_value
+    quo_fuel_price
+    quo_fuel_total
+    quo_rent
+    quo_drv_price
+    quo_drv_per
+    quo_name
+    quo_address
+    quo_tel
+    quo_line
+    quo_mail
+}
+quotation*--invoice
+Class invoice{
+    invoice_id
+    invoice_date
+    cus_id
+    invoice_month
+    invoice_year
+    invoice_total
+    invoice_status
+    invoice_due
+}
+Class report{
+    report Revenue - Expenses
+}
+Employee*-- report : 1...n\n do >
+Employee*-right-customerdataform: 1...n \n manage >
+Employee*--managedatatrunk: 1...n \n manage >
+Employee*--payment: 1...n \n manage >
+Employee*-left-quotation: 1...n \n manage >
+Class managedatatrunk{
+    driver 
+    trunk()
+    fuel
+    distance
+    province
+}
+managedatatrunk*--truck:1...n
+Class truck{
+    truck_id
+    truck_license
+    province_id
+    trucktype_id
+    fuel_id
+    truck_fueluse
+    truck_load
+    truck_status
+    truck_registime
+    truck_drv
+    truck_rent
+}
+Class trucktype{
+    trucktype_id
+    trucktype_name
+}
+truck*-right-trucktype:1...n
+@enduml

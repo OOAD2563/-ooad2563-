@@ -1,0 +1,29 @@
+@startuml employee_search
+skinparam state {
+    StartColor Red
+    BackgroundColor Peru
+    BorderColor Black
+    FontName Impact
+    EndColor Red
+}
+[*] -right-> Employee_id:input id employee
+Employee_id:ใส่รหัสพนักงาน
+Employee_id-->Check:search id
+Check:ค้นหารหัสพนักงานที่ตรงกัน
+Check-->Detail_Employee:Found id 
+Detail_Employee:รายละเอียดข้อมูลพนักงาน
+Check-->Employee_id:Not found\ninput id again
+Check-up->Check:search id
+Detail_Employee-->data_Employee_show:show detail employee
+data_Employee_show:แสดงข้อมูลพนักงาน
+data_Employee_show-->Edit_or_Close:Select button
+Edit_or_Close:เลือกปุ่มแก้ไขหรือปิดหน้าแสดงข้อมูล
+Edit_or_Close-up->Edit_or_Close:Wait click button
+Edit_or_Close-->Edit_Form:button = Edit
+Edit_Form:แก้ไขข้อมูลพนักงาน
+Edit_Form-up->Edit_Form:edit data
+Edit_Form-->[*]:Edit finshed and save data or cancle
+Edit_or_Close-left->Close :button = Close
+Close:ปิดหน้าต่างข้อมูลพนักงาน
+Close-->[*]:Close \ndata_Employee_show 
+@enduml

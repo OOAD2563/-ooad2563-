@@ -1,0 +1,101 @@
+@startuml truck
+
+Class Login{
+    -user 
+    -password
+    +Login Form()
+}
+Login<|-up-admin:< Fill in 1...1 
+Login<|-right-Management:< Fill in \n1...1
+Login<|-down-Employee:< Fill in \n1...1
+Class admin{
+    - dataemployee()
+    manage data employee
+}
+admin*- dataemployee: 1...n\n manage > 
+Class dataemployee{
+    +id 
+    +username
+    -password
+    +name 
+    -address
+    -tel 
+    -email 
+    +status 
+    -register
+    -type
+    +image
+}
+Class Management{
+    +id 
+    +username
+    +image
+    +approve_quotation()
+    +request_report()
+}
+dataemployee <-- Management: < search detail 
+quotation<-- Management:< approve_quotation \n1...n
+report<-- Management:< request report
+Class Employee{
+    +id 
+    +username
+    +image
+}
+Class payment{
+
+}
+Class customer{
+    -id 
+    -name 
+    -address 
+    -tel 
+    -email 
+    -register_date
+    -contact 
+    -about 
+    -line_id
+
+}
+Class quotation{
+   
+}
+Employee-->invoice
+Class invoice{
+
+}
+Class report{
+
+}
+Employee --> report : 1...n\n do >
+Employee -right-> customer: 1...n \n manage >
+Employee -->managedatatrunk: 1...n \n manage >
+Employee -->payment: 1...n \n manage >
+Employee -->quotation: 1...n \n manage >
+Class managedatatrunk{
+    +trunk()
+}
+managedatatrunk*--truck:1...n
+Class truck{
+    +truck_id
+    -truck_license
+    +province_id
+    +trucktype_id
+    +fuel_id
+    +truck_fueluse
+    +truck_load
+    +truck_status
+    +truck_registime
+    +truck_drv
+    +truck_rent
+    +trucktype()
+}
+Class trucktype{
+    +trucktype_id
+    +trucktype_name
+}
+truck *-right-trucktype:1...n
+
+payment--o customer:1...n
+invoice --o customer:1...n
+quotation --o customer:1...n
+@enduml
