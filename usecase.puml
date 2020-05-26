@@ -15,7 +15,7 @@ rectangle "Usecase Diagram "{
     Management--(เข้าสู่ระบบ)
     (เข้าสู่ระบบ)--Employee
     (จัดการข้อมูลเช่าลูกค้า)--Employee
-    (จัดการคำสั่งเช่าถบรรทุก)--Employee
+    (จัดการคำสั่งเช่ารถบรรทุก)--Employee
     (จัดทำใบเสนอราคา)--Employee
     Management--(อนุมัติใบเสนอราคา)
     (พิมพ์ใบเสร็จ)--Employee
